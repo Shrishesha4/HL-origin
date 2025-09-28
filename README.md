@@ -25,23 +25,19 @@ A complete Docker-based home server solution with media streaming, monitoring, n
 ### 1. Update System and Install Dependencies
 
 ```
-# Update system packages
 sudo apt update && sudo apt upgrade -y
 
-# Install essential packages
 sudo apt install -y curl wget git htop nano mergerfs
 
-# Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
 
-# Install Docker Compose
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-# Log out and back in for Docker group to take effect
 ```
+#### *Log out and back in for Docker group to take effect*
 
 ### 2. Clone Repository
 
