@@ -1,0 +1,136 @@
+- Media Services:
+    - Jellyfin:
+        icon: jellyfin.png
+        href: https://jellyfin.shrishesha.duckdns.org
+        widget:
+            type: jellyfin
+            url: http://10.0.0.10:8096
+            key: 7b5d2329201f487da1d4bd5732c7d359	
+
+    - Plex:
+        icon: plex.png
+        href: https://plex.shrishesha.duckdns.org
+        widget:
+            type: plex
+            url: http://10.0.0.10:32400
+            key: NZmDSQsKamGic8QakcKg
+
+    - Jellyseerr:
+        icon: jellyseerr.png
+        href: https://jseer.s4home.dpdns.org
+        widget:
+            type: jellyseerr
+            url: http://10.0.0.10:5055
+            key: MTc1ODc4Nzg2NTcwMjhhZWFkNmEyLWIxNzEtNGFlNS04ZWFiLTY2ZTE1N2E2Y2Y5YQ==
+
+- Download Tools:
+    - Radarr:
+        icon: radarr.png
+        href: https://arr-radarr.s4home.dpdns.org
+        widget:
+            type: radarr
+            url: https://arr-radarr.s4home.dpdns.org/
+            key: 3c7e75cee2704033877e4256e78dcc13
+
+    - Sonarr:
+        icon: sonarr.png
+        href: https://arr-sonarr.s4home.dpdns.org
+        widget:
+            type: sonarr
+            url: http://10.0.0.10:8989
+            key: e7bae9a0f1184fc7a28709f5675e62f0
+
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: https://qb.s4home.dpdns.org
+        widget:
+            type: qbittorrent
+            url: http://10.0.0.10:8080
+            username: Shrishesha
+            password: Shrishesha@4
+            enableLeechProgress: false
+
+
+- Management:
+
+    - Bazarr:
+        icon: bazarr.png
+        href: https://arr-bazarr.s4home.dpdns.org
+        widget:
+            type: bazarr
+            url: http://10.0.0.10:6767
+            key: 91a79853d54f7f8a2dc551211fa585b3
+
+    - Prowlarr:
+        icon: prowlarr.png
+        href: https://arr-prowlarr.s4home.dpdns.org
+        widget:
+            type: prowlarr
+            url: http://10.0.0.10:9696
+            key: a76f4d3db28249baa3574215655f28fb
+
+    - Portainer:
+        icon: portainer.png
+        href: https://portainer.s4home.dpdns.org
+        widget:
+            type: portainer
+            url: https://10.0.0.10:9443
+            env: 3
+            key: ptr_CYpFQv+D3dzTqUW7cIZvgRP4pYiWUBqz6gHDI6NTF5E=
+
+    
+
+    
+
+- Utilities:
+
+    - Glances:
+        icon: glances.png
+        href: https://glances.shrishesha.duckdns.org
+
+    - IT-Tools:
+        icon: it-tools.png
+        href: https://tools.s4home.dpdns.org
+    
+    - CasaOS:
+        icon: casaos.png
+        href: https://casaos.s4home.dpdns.org
+    
+    - openspeedtest:
+        icon: openspeedtest.png
+        href: https://speed.s4home.dpdns.org
+    
+    - Beszel:
+        icon: beszel.png
+        href: https://stats.s4home.dpdns.org
+
+    - Code Server:
+        icon: code-server.png
+        href: https://vsc.s4home.dpdns.org
+
+    - Filebrowser:
+        icon: filebrowser.png
+        href: https://cloud.s4home.dpdns.org
+
+    - Nginx Proxy:
+        icon: nginx.png
+        href: https://proxy.s4home.dpdns.org
+        # widget:
+        #     type: npm
+        #     url: http://10.0.0.10:81
+        #     username: shrisheshanarmatesshvara@gmail.com
+        #     password: Shrishesha@4
+
+- Dash:
+    - Dash:
+        widget:
+            type: iframe
+            name: Dash
+            src: https://dash.s4home.dpdns.org/
+            classes: w-full h-screen min-w-screen
+            referrerPolicy: same-origin # optional, no default
+            allowPolicy: autoplay; fullscreen; gamepad # optional, no default
+            allowFullscreen: false # optional, default: true
+            loadingStrategy: eager # optional, default: eager
+            allowScrolling: yes # optional, default: yes
+            # refreshInterval: 2000 # optional, no default

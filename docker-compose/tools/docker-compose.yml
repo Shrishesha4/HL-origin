@@ -1,0 +1,125 @@
+services:
+  
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /pool:/srv
+      - /home/shrishesha/servarr/tools/filebrowser/filebrowser.db:/database/filebrowser.db
+      - /home/shrishesha/servarr/tools/filebrowser/settings.json:/config/settings.json
+    ports:
+      - 8095:80
+  
+  it-tools:
+    image: 'corentinth/it-tools:latest'
+    ports:
+      - '8090:80'
+    restart: unless-stopped
+    container_name: it-tools
+  
+  beszel-agent:
+    image: henrygd/beszel-agent
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /home/shrishesha/servarr/tools/beszel/beszel_agent_data:/var/lib/beszel-agent
+      # monitor other disks / partitions by mounting a folder in /extra-filesystems
+      - /mnt/ssd/.beszel:/extra-filesystems/sda1:ro
+    environment:
+      LISTEN: 45876
+      KEY: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICkPkXheGSc65Be7kiqMS/iKnl0HMRkOUhlwk108qf73'
+      TOKEN: 6376-97b186aba-5e44-3d731062c4
+      HUB_URL: http://10.0.0.2:8090
+  
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name: ntfy
+    command:
+      - serve
+    environment:
+      - TZ=Asia/Kolkata
+    user: 1000:1000
+    volumes:
+      - /var/cache/ntfy:/var/cache/ntfy
+      - /etc/ntfy:/etc/ntfy
+    ports:
+      - 7200:80
+    healthcheck:
+        test: ["CMD-SHELL", "wget -q --tries=1 http://localhost:80/v1/health -O - | grep -Eo '\"healthy\"\\s*:\\s*true' || exit 1"]
+        interval: 60s
+        timeout: 10s
+        retries: 3
+        start_period: 40s
+    restart: unless-stopped
+  
+  glance:
+    container_name: glance
+    image: glanceapp/glance:latest
+    restart: unless-stopped
+    ports:
+      - 4404:8080
+    volumes:
+      - /home/shrishesha/servarr/tools/glance/config:/app/config
+      - /mnt/ssd:/mnt/ssd
+      - /home/shrishesha/servarr/tools/glance/assets:/app/assets
+      - /etc/localtime:/etc/localtime:ro
+      # Optionally, also mount docker socket if you want to use the docker containers widget
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    ports:
+      - 4444:3000
+    volumes:
+      - /home/shrishesha/servarr/tools/homepage:/app/config
+      - /pool:/pool:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: s4home.dpdns.org
+
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      #- PASSWORD=password #optional
+      #- HASHED_PASSWORD= #optional
+      #- SUDO_PASSWORD=password #optional
+      #- SUDO_PASSWORD_HASH= #optional
+      - PROXY_DOMAIN=code.shrishesha.duckdns.org #optional
+      - DEFAULT_WORKSPACE=/servarr-configs/servarr #optional
+      - PWA_APPNAME=code #optional
+    volumes:
+      - /home/shrishesha/servarr/tools/code-server/config:/config
+      - /home/shrishesha:/servarr-configs
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+
+  glances:
+    container_name: glances
+    image: nicolargo/glances:latest
+    ports:
+      - 7300:61208
+    environment:
+      - TZ=Asia/Kolkata
+      - GLANCES_OPT=-w -C /glances/conf/glances.conf
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - /home/shrishesha/servarr/tools/glances/glances.conf:/glances/conf/glances.conf:ro
+      - /home/shrishesha:/shrishesha:ro
+      - /mnt/ssd:/mnt/ssd:ro
+      - /pool:/pool:ro
+      - /mnt/hardboi:/mnt/hardboi:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro

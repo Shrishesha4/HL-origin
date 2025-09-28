@@ -1,0 +1,45 @@
+services:
+  proxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    network_mode: bridge
+    ports:
+      - '82:80'
+      - '443:443'
+      - '81:81'
+    volumes:
+      - /home/shrishesha/servarr/network/npm/data:/data
+      - /home/shrishesha/servarr/network/npm/letsencrypt:/etc/letsencrypt
+    healthcheck:
+      test: ["CMD", "/usr/bin/check-health"]
+      interval: 10s
+      timeout: 3s
+  
+  speedtest:
+    restart: unless-stopped
+    container_name: openspeedtest
+    ports:
+        - '3000:3000'
+        - '3001:3001'
+    image: openspeedtest/latest
+  
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run --token eyJhIjoiYWNkNjMxNjIxMDVlMTNjYmJiMGVmMzI1MzUzNDczNTMiLCJ0IjoiNDJhNTZkNGItYjZlOC00ZjY2LThlNTctMTU5NGM1YmI0YmMxIiwicyI6Ik5USmhPR1psWTJZdE56VmtZaTAwTUdVNExUazFObUV0WlRkaFpXWm1PVE5qTURsaCJ9
+  
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - TZ=Asia/Kolkata
+    ports:
+      - "${PORT:-8191}:8191"
+    restart: unless-stopped
+  
+volumes:
+  data:
+  letsencrypt:

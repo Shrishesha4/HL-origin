@@ -1,0 +1,6 @@
+UUID=7844ea08-35b9-41aa-820a-14aa27c56c5b /mnt/ssd  ext4  defaults  0  2
+UUID=6cb0a840-a13d-410c-8977-7a326f630d0f /mnt/hardboi  ext4  defaults  0  2
+# UUID="e0219a8c-14fa-4d90-b787-a08bca4768f9" /mnt/home  ext4  defaults  0  2
+/home /mnt/home none bind 0 0
+
+/mnt/ssd:/mnt/hardboi:/home /pool fuse.mergerfs defaults,nonempty,allow_other,use_ino,cache.files=off,moveonenospc=true,category.create=mfs,dropcacheonclose=true,minfreespace=50G 0 0

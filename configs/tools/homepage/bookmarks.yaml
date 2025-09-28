@@ -1,0 +1,91 @@
+---
+
+- Bookmarks:
+
+    - Shrishesha:
+        - abbr: SH
+          href: https://shrishesha.vercel.app/
+          icon: https://shrishesha.vercel.app/favicon.ico
+          description: ‎ 
+    - Github:
+        - abbr: GH
+          href: https://github.com/
+          icon: github-light.svg
+          description: ‎ 
+
+    - Drive:
+        - abbr: GD
+          href: https://drive.google.com/
+          icon: google-drive.svg
+          description: ‎ 
+    - Perplexity:
+        - abbr: PZ
+          href: https://www.perplexity.ai/
+          icon: https://www.perplexity.ai/favicon.ico
+          description: ‎ 
+    - ChatGPT:
+        - abbr: CGPT
+          href: https://chat.openai.com/
+          icon: https://chat.openai.com/favicon.ico
+          description: ‎ 
+    - YouTube:
+        - abbr: YT
+          href: https://youtube.com/
+          icon: youtube.svg
+          description: ‎ 
+    - Reddit:
+        - abbr: RE
+          href: https://reddit.com/
+          icon: reddit.svg
+          description: ‎ 
+    - X:
+        - abbr: TX
+          href: https://x.com/
+          icon: x-light.svg
+          description: ‎ 
+    - LinkedIn:
+        - abbr: LI
+          href: https://linkedin.com/
+          icon: linkedin.svg
+          description: ‎ 
+    - iCloud:
+        - abbr: IC
+          href: https://www.icloud.com/
+          icon: https://www.icloud.com/favicon.ico
+          description: ‎ 
+
+    - Speedtest:
+        - abbr: ST
+          href: https://www.speedtest.net/
+          icon: https://www.speedtest.net/favicon.ico
+          description: ‎ 
+
+    - Vercel:
+        - abbr: VC
+          href: https://vercel.com/
+          icon: https://vercel.com/favicon.ico
+          description: ‎ 
+
+    - Photos:
+        - abbr: PH
+          href: https://photos.google.com/
+          icon: https://photos.google.com/favicon.ico
+          description: ‎ 
+
+    - Fast.com:
+        - abbr: FC
+          href: https://fast.com/
+          icon: fast-com.svg
+          description: ‎ 
+
+    - Netfree:
+        - abbr: NF
+          href: https://netfree2.cc/
+          icon: https://netfree2.cc/favicon.ico
+          description: ‎ 
+
+    - 1337x:
+        - abbr: 1X
+          href: https://www.1337x.to/
+          icon: https://www.1337x.to/favicon.ico
+          description: ‎ 
